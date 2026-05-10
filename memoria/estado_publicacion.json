@@ -1,11 +1,16 @@
 {
-  "ultimo_id": 1,
-  "fecha_ultima_publicacion": "2026-05-09",
+  "ultimo_id": 2,
+  "fecha_ultima_publicacion": "2026-05-10",
   "publicaciones": [
     {
       "id": 1,
       "fecha": "2026-05-09",
       "tema": "Vínculos humanos"
+    },
+    {
+      "id": 2,
+      "fecha": "2026-05-10",
+      "tema": "Soledad fértil"
     }
   ]
 }
