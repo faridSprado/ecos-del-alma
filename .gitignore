@@ -1,0 +1,17 @@
+# Entorno virtual
+venv/
+
+# Variables de entorno (API Keys - NUNCA se suben a GitHub)
+.env
+
+# Archivos de Python compilados
+__pycache__/
+*.pyc
+*.pyo
+
+# Configuración de VS Code
+.vscode/
+
+# Archivos de sistema
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,46 @@
+{
+  "proyecto": "Ecos del Alma",
+  "descripcion": "Escritos y poemas breves de alto impacto emocional para redes sociales.",
+  "tono_estilo": {
+    "genero": "Poesía contemporánea / reflexión íntima",
+    "atmosfera": "Cercana, vulnerable, luminosa incluso en la melancolía",
+    "longitud": "Entre 40 y 150 palabras. Frases cortas, ritmo pausado.",
+    "recursos_permitidos": ["metáfora", "anáfora", "imagen sensorial", "pregunta retórica", "paralelismo"],
+    "prohibido": [
+      "clichés como 'todo pasa por algo' o 'el amor todo lo puede'",
+      "rimas forzadas o cursis",
+      "lenguaje excesivamente abstracto sin anclaje sensorial",
+      "tono de autoayuda barata"
+    ]
+  },
+  "temas": [
+    {
+      "nombre": "Amor consciente",
+      "descripcion": "Amor maduro, elección diaria, no idealización. Vínculo que suma."
+    },
+    {
+      "nombre": "Despedidas y duelos",
+      "descripcion": "Pérdida, soltar, nostalgia que sana, cicatrices que enseñan."
+    },
+    {
+      "nombre": "Soledad fértil",
+      "descripcion": "Estar solo no es vacío, es reencuentro. Autodescubrimiento."
+    },
+    {
+      "nombre": "Esperanza realista",
+      "descripcion": "Luz en lo cotidiano, resistir sin endulzar. Pequeños triunfos."
+    },
+    {
+      "nombre": "Vínculos humanos",
+      "descripcion": "Amistad, familia elegida, abrazos que salvan. Conexiones auténticas."
+    }
+  ],
+  "estructura_poetica": [
+    "Iniciar con una imagen sensorial concreta (un café, una ventana, un gesto).",
+    "Desarrollar una emoción ligada a esa imagen, usando una metáfora fresca.",
+    "Cerrar con una verdad íntima, una pregunta o un giro que invite a la pausa.",
+    "Evitar títulos explícitos; el texto debe sostenerse solo."
+  ],
+  "hashtags_sugeridos": ["#ecosdelalma", "#poesia", "#reflexion", "#sentires"],
+  "restriccion_adicional": "NUNCA uses la palabra 'alma' en el texto. Debe sugerir, no nombrar."
+}

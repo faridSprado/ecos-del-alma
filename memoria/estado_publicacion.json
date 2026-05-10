@@ -1,0 +1,11 @@
+{
+  "ultimo_id": 1,
+  "fecha_ultima_publicacion": "2026-05-09",
+  "publicaciones": [
+    {
+      "id": 1,
+      "fecha": "2026-05-09",
+      "tema": "Vínculos humanos"
+    }
+  ]
+}
