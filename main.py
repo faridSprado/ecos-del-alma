@@ -47,7 +47,7 @@ if not relato_ok:
 hoy = datetime.now().strftime("%Y-%m-%d")
 nuevo_id = memoria['ultimo_id'] + 1
 titulo_archivo = f"escrito-{nuevo_id:04d}_{hoy}.md"
-ruta_publicacion = f"web/_posts/{titulo_archivo}"
+ruta_publicacion = f"docs/_posts/{titulo_archivo}"
 
 # Generar ilustración
 url_ilustracion = None

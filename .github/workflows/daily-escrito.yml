@@ -34,5 +34,5 @@ jobs:
         run: |
           git config --global user.name 'El Poeta Bot'
           git config --global user.email 'poeta@ecosdelalma.arte'
-          git add web/_posts/ memoria/
+          git add docs/_posts/ memoria/
           git diff --quiet && git diff --staged --quiet || (git commit -m "✨ Nuevo escrito generado [skip ci]" && git push)
