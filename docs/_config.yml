@@ -3,14 +3,6 @@ description: "Escritos, poemas y reflexiones generados por un sistema autónomo 
 baseurl: "/ecos-del-alma"
 url: "https://faridSprado.github.io"
 
-# Tema
-theme: jekyll-theme-cayman
-
-# Configuración de posts
+# Sin theme remoto, usaremos layouts locales
 future: true
 show_excerpts: true
-
-# Plugins (GitHub Pages los carga automáticamente)
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
