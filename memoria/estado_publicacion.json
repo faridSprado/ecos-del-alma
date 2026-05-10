@@ -1,5 +1,5 @@
 {
-  "ultimo_id": 4,
+  "ultimo_id": 5,
   "fecha_ultima_publicacion": "2026-05-10",
   "publicaciones": [
     {
@@ -29,6 +29,16 @@
       "tema": "Volver a mí",
       "archivo": "docs/_posts/2026-05-10-escrito-0004.md",
       "imagen": "/assets/social/escrito-0004.png"
+    },
+    {
+      "id": 5,
+      "fecha": "2026-05-10T09:21:15.714994-05:00",
+      "tema": "Despedidas y duelos",
+      "archivo": "docs/_posts/2026-05-10-escrito-0005.md",
+      "imagen": "/assets/social/escrito-0005.png",
+      "background_image": "https://image.pollinations.ai/prompt/A%20quiet%2C%20earth-toned%20still%20life%3A%20an%20empty%20cup%20on%20a%20wooden%20table%2C%20with%20a%20soft%2C%20warm%20glow%20and%20subtle%20grain%2C%20illuminated%20by%20natural%20window%20light%2C%20evoking%20nostalgia%20and%20longing.?width=1080&height=1080&nologo=true&enhance=true",
+      "prompt_visual": "A quiet, earth-toned still life: an empty cup on a wooden table, with a soft, warm glow and subtle grain, illuminated by natural window light, evoking nostalgia and longing.",
+      "puntuacion_emocional": 9
     }
   ]
 }
