@@ -2,8 +2,8 @@ name: Generar y publicar Ecos del Alma
 
 on:
   schedule:
-    # 13:00 UTC = 8:00 a. m. Colombia
-    - cron: "0 13 * * *"
+    # 08:00 UTC = 3:00 a. m. Colombia
+    - cron: "0 8 * * *"
   workflow_dispatch:
 
 jobs:
