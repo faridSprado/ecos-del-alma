@@ -1,6 +1,6 @@
 {
-  "ultimo_id": 5,
-  "fecha_ultima_publicacion": "2026-05-10",
+  "ultimo_id": 6,
+  "fecha_ultima_publicacion": "2026-05-11",
   "publicaciones": [
     {
       "id": 1,
@@ -38,6 +38,16 @@
       "imagen": "/assets/social/escrito-0005.png",
       "background_image": "https://image.pollinations.ai/prompt/A%20quiet%2C%20earth-toned%20still%20life%3A%20an%20empty%20cup%20on%20a%20wooden%20table%2C%20with%20a%20soft%2C%20warm%20glow%20and%20subtle%20grain%2C%20illuminated%20by%20natural%20window%20light%2C%20evoking%20nostalgia%20and%20longing.?width=1080&height=1080&nologo=true&enhance=true",
       "prompt_visual": "A quiet, earth-toned still life: an empty cup on a wooden table, with a soft, warm glow and subtle grain, illuminated by natural window light, evoking nostalgia and longing.",
+      "puntuacion_emocional": 9
+    },
+    {
+      "id": 6,
+      "fecha": "2026-05-11T05:58:03.477892-05:00",
+      "tema": "Amor consciente",
+      "archivo": "docs/_posts/2026-05-11-escrito-0006.md",
+      "imagen": "/assets/social/escrito-0006.png",
+      "background_image": "https://image.pollinations.ai/prompt/A%20serene%20couple%20shares%20a%20coffee%20in%20a%20quiet%20morning%20moment%2C%20eyes%20locked%2C%20with%20soft%20natural%20light%20and%20muted%20tones%2C%20warm%20minimalism%2C%20and%20subtle%20grain%2C%20evoking%20a%20sense%20of%20intimate%20connection.?width=1080&height=1080&nologo=true&enhance=true",
+      "prompt_visual": "A serene couple shares a coffee in a quiet morning moment, eyes locked, with soft natural light and muted tones, warm minimalism, and subtle grain, evoking a sense of intimate connection.",
       "puntuacion_emocional": 9
     }
   ]
