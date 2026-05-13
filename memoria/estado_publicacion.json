@@ -1,6 +1,6 @@
 {
-  "ultimo_id": 7,
-  "fecha_ultima_publicacion": "2026-05-12",
+  "ultimo_id": 8,
+  "fecha_ultima_publicacion": "2026-05-13",
   "publicaciones": [
     {
       "id": 1,
@@ -59,6 +59,16 @@
       "background_image": "https://image.pollinations.ai/prompt/A%20serene%2C%20empty%20table%20with%20a%20lone%20cup%2C%20bathed%20in%20warm%2C%20golden%20morning%20light%2C%20evoking%20a%20sense%20of%20hopeful%20uncertainty%2C%20as%20if%20a%20new%20day%20is%20unfolding%20with%20promise%20and%20possibility.?width=1080&height=1080&nologo=true&enhance=true",
       "prompt_visual": "A serene, empty table with a lone cup, bathed in warm, golden morning light, evoking a sense of hopeful uncertainty, as if a new day is unfolding with promise and possibility.",
       "puntuacion_emocional": 8
+    },
+    {
+      "id": 8,
+      "fecha": "2026-05-13T05:22:06.277677-05:00",
+      "tema": "Lo que no dije",
+      "archivo": "docs/_posts/2026-05-13-escrito-0008.md",
+      "imagen": "/assets/social/escrito-0008.png",
+      "background_image": "https://image.pollinations.ai/prompt/A%20worn%2C%20blank%20paper%20on%20a%20wooden%20desk%2C%20softly%20lit%20by%20warm%2C%20natural%20light%2C%20with%20a%20faint%2C%20crumpled%20paper%20shadow%2C%20evoking%20a%20sense%20of%20longing%20and%20unspoken%20words.?width=1080&height=1080&nologo=true&enhance=true",
+      "prompt_visual": "A worn, blank paper on a wooden desk, softly lit by warm, natural light, with a faint, crumpled paper shadow, evoking a sense of longing and unspoken words.",
+      "puntuacion_emocional": 9
     }
   ]
 }
