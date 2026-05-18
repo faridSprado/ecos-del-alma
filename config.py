@@ -16,7 +16,7 @@ MEMORIA_TEMAS_PATH = MEMORIA_DIR / "temas_usados.json"
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 PROJECT_TIMEZONE = os.getenv("PROJECT_TIMEZONE", "America/Bogota")
-MAX_INTENTOS = int(os.getenv("MAX_INTENTOS", "3"))
-TEMAS_RECIENTES_A_EVITAR = int(os.getenv("TEMAS_RECIENTES_A_EVITAR", "3"))
+MAX_INTENTOS = int(os.getenv("MAX_INTENTOS", "5"))
+TEMAS_RECIENTES_A_EVITAR = int(os.getenv("TEMAS_RECIENTES_A_EVITAR", "6"))
 
 PROJECT_NAME = "Ecos del Alma"

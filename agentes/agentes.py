@@ -69,6 +69,19 @@ ENGLISH_MARKERS = [
     "sunlight",
 ]
 
+HUMANIZER_REGLAS = (
+    "Suena a una persona pensando, no a una plantilla.",
+    "Usa detalles materiales concretos y evita símbolos inflados.",
+    "No cierres con moralejas ni frases motivacionales.",
+    "Evita gerundios en cadena, tríos mecánicos y fórmulas como 'no es solo'.",
+    "Prefiere verbos simples, ritmo variado y una emoción contenida.",
+)
+
+
+def _lista_guia(clave: str) -> list[str]:
+    valores = GUIA.get(clave, [])
+    return valores if isinstance(valores, list) else []
+
 
 def limpiar_respuesta(texto: str) -> str:
     texto = texto.strip()
@@ -128,6 +141,22 @@ def detectar_tokens_sospechosos(texto: str) -> list[str]:
             vistos.add(token)
             salida.append(token)
     return salida
+
+
+def detectar_motivos_bloqueados(texto: str) -> list[str]:
+    motivos = [normalizar_token(item) for item in _lista_guia("motivos_bloqueados")]
+    if not motivos:
+        return []
+
+    tokens = re.findall(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+", texto)
+    encontrados: list[str] = []
+
+    for token in tokens:
+        normalizado = normalizar_token(token)
+        if normalizado in motivos and normalizado not in encontrados:
+            encontrados.append(normalizado)
+
+    return encontrados
 
 
 
@@ -215,6 +244,58 @@ Texto:
     return segunda_version or texto_corregido
 
 
+def humanizar_texto(texto: str, tema: dict[str, str]) -> str:
+    """
+    Pasa el texto por la guía humanizer antes de la revisión final.
+    La meta no es adornar: es quitar huellas de plantilla y repetir menos motivos.
+    """
+
+    humanizer = GUIA.get("humanizer", {})
+    evitar = humanizer.get("evitar", []) if isinstance(humanizer, dict) else []
+    preferir = humanizer.get("preferir", []) if isinstance(humanizer, dict) else []
+    bloqueados = _lista_guia("motivos_bloqueados")
+    vigilados = _lista_guia("motivos_vigilados")
+
+    prompt = f"""
+Eres editor literario de {PROJECT_NAME}. Aplica una pasada de humanizer al texto.
+
+Tema: {tema['nombre']} - {tema['descripcion']}
+
+Reglas de humanizer:
+{chr(10).join(f'- {item}' for item in HUMANIZER_REGLAS)}
+
+Evita especialmente:
+{chr(10).join(f'- {item}' for item in evitar)}
+
+Prefiere:
+{chr(10).join(f'- {item}' for item in preferir)}
+
+Motivos bloqueados: {', '.join(bloqueados)}
+Motivos vigilados, solo si son inevitables: {', '.join(vigilados)}
+
+Instrucciones:
+- Conserva el tema, la intención y una longitud breve.
+- No uses la palabra "alma".
+- No uses los motivos bloqueados.
+- Si el texto depende de un motivo repetido, cámbialo por un objeto cotidiano menos usado.
+- Mantén el texto en español natural.
+- Devuelve solo la versión final, sin título ni explicación.
+
+Texto:
+{texto}
+"""
+
+    response = client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.25,
+        max_tokens=420,
+    )
+
+    humanizado = limpiar_respuesta(response.choices[0].message.content or "")
+    return humanizado or texto
+
+
 
 def seleccionar_tema(temas_recientes: list[str] | None = None) -> dict[str, str]:
     temas_recientes = temas_recientes or []
@@ -258,6 +339,15 @@ Descripción: {tema_elegido['descripcion']}
 ## Estructura sugerida
 {chr(10).join(f'- {item}' for item in GUIA['estructura_poetica'])}
 
+## Variedad editorial
+- No uses estos motivos bloqueados: {', '.join(_lista_guia('motivos_bloqueados'))}.
+- No empieces por costumbre con estos motivos vigilados: {', '.join(_lista_guia('motivos_vigilados'))}.
+- Puedes partir de objetos menos usados como: {', '.join(_lista_guia('objetos_sugeridos'))}.
+- Si eliges un objeto, que sea necesario para la escena y no un adorno.
+
+## Pasada humanizer antes de responder
+{chr(10).join(f'- {item}' for item in HUMANIZER_REGLAS)}
+
 ## Reglas de salida
 - Devuelve solo el texto final.
 - No incluyas título.
@@ -272,7 +362,10 @@ Descripción: {tema_elegido['descripcion']}
             {"role": "system", "content": system_prompt},
             {
                 "role": "user",
-                "content": f"Escribe un texto nuevo sobre: {tema_elegido['nombre']}.",
+                "content": (
+                    f"Escribe un texto nuevo sobre: {tema_elegido['nombre']}. "
+                    "Evita motivos repetidos y no uses la palabra taza."
+                ),
             },
         ],
         temperature=0.9,
@@ -280,6 +373,8 @@ Descripción: {tema_elegido['descripcion']}
     )
 
     texto = limpiar_respuesta(response.choices[0].message.content or "")
+    texto = asegurar_texto_en_espanol(texto, tema_elegido)
+    texto = humanizar_texto(texto, tema_elegido)
     texto = asegurar_texto_en_espanol(texto, tema_elegido)
 
     print(f"✅ Texto generado: {texto[:70]}...")
@@ -306,6 +401,20 @@ def agente_guardian(
             "comentario_editorial": "Se detectaron restos de inglés o mezcla de idiomas.",
         }
 
+    motivos_bloqueados = detectar_motivos_bloqueados(texto)
+    if motivos_bloqueados:
+        violaciones = [
+            "El texto usa motivos bloqueados por repetición editorial: "
+            + ", ".join(motivos_bloqueados)
+        ]
+        print(f"❌ Rechazado: {violaciones}")
+        return violaciones, False, {
+            "es_valido": False,
+            "violaciones": violaciones,
+            "puntuacion_emocional": 0,
+            "comentario_editorial": "Se detectó un motivo sobreusado.",
+        }
+
     check_prompt = f"""
 Actúa como editor literario. Evalúa si este texto puede publicarse en {PROJECT_NAME}.
 
@@ -319,6 +428,9 @@ Tema: {tema['nombre']} - {tema['descripcion']}
 5. No parece texto corporativo ni autoayuda genérica.
 6. Mantiene una extensión razonable para una publicación poética breve.
 7. Debe estar total y completamente en español. Si detectas una sola palabra en inglés, spanglish, camelCase o un token extraño, debes rechazarlo.
+8. Debe pasar una lectura humanizer: sin importancia impostada, sin cierre de manual, sin tríos mecánicos, sin gerundios acumulados, sin frases como "recordatorio", "belleza en lo cotidiano", "en este espacio", "desde la sombra hacia la luz" o "no es solo".
+9. No puede usar estos motivos bloqueados: {', '.join(_lista_guia('motivos_bloqueados'))}.
+10. Debe evitar apoyarse por costumbre en estos motivos vigilados: {', '.join(_lista_guia('motivos_vigilados'))}.
 
 ## Texto
 {texto}
@@ -354,7 +466,7 @@ Responde únicamente con JSON válido, sin markdown, con esta estructura exacta:
     es_valido = bool(resultado.get("es_valido"))
     puntuacion = int(resultado.get("puntuacion_emocional", 0) or 0)
 
-    if es_valido and puntuacion >= 7:
+    if es_valido and puntuacion >= 8:
         print(f"✅ Aprobado ({puntuacion}/10)")
         return texto, True, resultado
 
@@ -368,12 +480,12 @@ def agente_visualizador(texto: str, tema: dict[str, str]) -> tuple[str, str]:
     print("🎨 El Visualizador crea la dirección visual...")
 
     prompt = f"""
-Create an English image prompt for a square editorial artwork that accompanies this Spanish poetic text.
+Create an English image prompt for a square editorial background that will sit behind a Spanish poetic text card.
 
 Theme: {tema['nombre']}
-Text: {texto[:500]}
+Text for emotional context: {texto[:650]}
 
-Visual style: emotional editorial poster, soft paper texture, subtle grain, warm minimalism, muted tones, cinematic natural light, no readable text, no logos, no detailed faces.
+Visual style: emotional editorial photography, soft paper texture, subtle grain, warm minimalism, muted tones, cinematic natural light, clean negative space for overlaid text, no readable text, no letters, no logos, no detailed faces. Avoid cups, mugs and coffee unless the text explicitly needs them.
 
 Return only the image prompt. Maximum 70 words.
 """

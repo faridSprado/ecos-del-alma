@@ -1,44 +1,30 @@
 {
   "ultimo_id": 13,
-  "fecha_ultima_publicacion": "2026-05-18",
+  "fecha_ultima_publicacion": "2026-05-17",
   "publicaciones": [
     {
       "id": 1,
       "fecha": "2026-05-09",
       "tema": "Vínculos humanos",
       "archivo": "docs/_posts/2026-05-09-escrito-0001.md",
-      "imagen": "/assets/social/escrito-0001.png"
+      "imagen": "/assets/social/escrito-0001.png",
+      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20a%20warm%20kitchen%20doorway%2C%20two%20chairs%20near%20a%20table%2C%20soft%20evening%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=1"
     },
     {
       "id": 2,
       "fecha": "2026-05-10",
       "tema": "Soledad fértil",
       "archivo": "docs/_posts/2026-05-10-escrito-0002.md",
-      "imagen": "/assets/social/escrito-0002.png"
-    },
-    {
-      "id": 3,
-      "fecha": "2026-05-10",
-      "tema": "Esperanza realista",
-      "archivo": "docs/_posts/2026-05-10-escrito-0003.md",
-      "imagen": "/assets/social/escrito-0003.png"
+      "imagen": "/assets/social/escrito-0002.png",
+      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20an%20open%20drawer%20with%20an%20old%20photo%2C%20dust%20in%20sunlight%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=2"
     },
     {
       "id": 4,
       "fecha": "2026-05-10",
       "tema": "Volver a mí",
       "archivo": "docs/_posts/2026-05-10-escrito-0004.md",
-      "imagen": "/assets/social/escrito-0004.png"
-    },
-    {
-      "id": 5,
-      "fecha": "2026-05-10T09:21:15.714994-05:00",
-      "tema": "Despedidas y duelos",
-      "archivo": "docs/_posts/2026-05-10-escrito-0005.md",
-      "imagen": "/assets/social/escrito-0005.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20quiet%2C%20earth-toned%20still%20life%3A%20an%20empty%20cup%20on%20a%20wooden%20table%2C%20with%20a%20soft%2C%20warm%20glow%20and%20subtle%20grain%2C%20illuminated%20by%20natural%20window%20light%2C%20evoking%20nostalgia%20and%20longing.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A quiet, earth-toned still life: an empty cup on a wooden table, with a soft, warm glow and subtle grain, illuminated by natural window light, evoking nostalgia and longing.",
-      "puntuacion_emocional": 9
+      "imagen": "/assets/social/escrito-0004.png",
+      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20an%20open%20window%20and%20a%20chair%20near%20a%20city%20street%2C%20warm%20muted%20light%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=4"
     },
     {
       "id": 6,
@@ -46,19 +32,9 @@
       "tema": "Amor consciente",
       "archivo": "docs/_posts/2026-05-11-escrito-0006.md",
       "imagen": "/assets/social/escrito-0006.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20serene%20couple%20shares%20a%20coffee%20in%20a%20quiet%20morning%20moment%2C%20eyes%20locked%2C%20with%20soft%20natural%20light%20and%20muted%20tones%2C%20warm%20minimalism%2C%20and%20subtle%20grain%2C%20evoking%20a%20sense%20of%20intimate%20connection.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A serene couple shares a coffee in a quiet morning moment, eyes locked, with soft natural light and muted tones, warm minimalism, and subtle grain, evoking a sense of intimate connection.",
+      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20two%20hands%20resting%20near%20each%20other%20on%20a%20wooden%20table%2C%20soft%20morning%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=6",
+      "prompt_visual": "Quiet editorial photograph of two hands resting near each other on a wooden table, soft morning light, muted earth tones, subtle paper texture, clean negative space, no text, no logo, no detailed faces.",
       "puntuacion_emocional": 9
-    },
-    {
-      "id": 7,
-      "fecha": "2026-05-12T05:28:33.766698-05:00",
-      "tema": "Esperanza realista",
-      "archivo": "docs/_posts/2026-05-12-escrito-0007.md",
-      "imagen": "/assets/social/escrito-0007.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20serene%2C%20empty%20table%20with%20a%20lone%20cup%2C%20bathed%20in%20warm%2C%20golden%20morning%20light%2C%20evoking%20a%20sense%20of%20hopeful%20uncertainty%2C%20as%20if%20a%20new%20day%20is%20unfolding%20with%20promise%20and%20possibility.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A serene, empty table with a lone cup, bathed in warm, golden morning light, evoking a sense of hopeful uncertainty, as if a new day is unfolding with promise and possibility.",
-      "puntuacion_emocional": 8
     },
     {
       "id": 8,
@@ -66,38 +42,8 @@
       "tema": "Lo que no dije",
       "archivo": "docs/_posts/2026-05-13-escrito-0008.md",
       "imagen": "/assets/social/escrito-0008.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20worn%2C%20blank%20paper%20on%20a%20wooden%20desk%2C%20softly%20lit%20by%20warm%2C%20natural%20light%2C%20with%20a%20faint%2C%20crumpled%20paper%20shadow%2C%20evoking%20a%20sense%20of%20longing%20and%20unspoken%20words.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A worn, blank paper on a wooden desk, softly lit by warm, natural light, with a faint, crumpled paper shadow, evoking a sense of longing and unspoken words.",
-      "puntuacion_emocional": 9
-    },
-    {
-      "id": 9,
-      "fecha": "2026-05-14T05:12:00.354406-05:00",
-      "tema": "Cicatrices",
-      "archivo": "docs/_posts/2026-05-14-escrito-0009.md",
-      "imagen": "/assets/social/escrito-0009.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20warm%2C%20muted%20still%20life%20of%20a%20cracked%2C%20empty%20coffee%20cup%20on%20a%20worn%20table%2C%20illuminated%20by%20soft%2C%20natural%20morning%20light%2C%20with%20subtle%20shadows%20and%20texture%2C%20evoking%20a%20sense%20of%20melancholy%20and%20nostalgia.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A warm, muted still life of a cracked, empty coffee cup on a worn table, illuminated by soft, natural morning light, with subtle shadows and texture, evoking a sense of melancholy and nostalgia.",
-      "puntuacion_emocional": 9
-    },
-    {
-      "id": 10,
-      "fecha": "2026-05-15T05:19:17.309917-05:00",
-      "tema": "Volver a mí",
-      "archivo": "docs/_posts/2026-05-15-escrito-0010.md",
-      "imagen": "/assets/social/escrito-0010.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20serene%2C%20empty%20room%20with%20a%20vacant%20chair%2C%20soft%20morning%20light%20pours%20through%20an%20open%20window%2C%20casting%20a%20warm%20glow%20on%20a%20solitary%2C%20empty%20cup%20on%20a%20wooden%20table%2C%20evoking%20a%20sense%20of%20quiet%20contemplation%20and%20self-reflection.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A serene, empty room with a vacant chair, soft morning light pours through an open window, casting a warm glow on a solitary, empty cup on a wooden table, evoking a sense of quiet contemplation and self-reflection.",
-      "puntuacion_emocional": 9
-    },
-    {
-      "id": 11,
-      "fecha": "2026-05-16T04:27:13.936203-05:00",
-      "tema": "Amor consciente",
-      "archivo": "docs/_posts/2026-05-16-escrito-0011.md",
-      "imagen": "/assets/social/escrito-0011.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20warm%2C%20cinematic%20scene%20of%20entwined%20hands%20around%20a%20shared%20coffee%20cup%2C%20softly%20lit%20by%20morning%20light%20filtering%20through%20a%20window%2C%20on%20a%20subtle%2C%20grainy%20paper%20texture.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A warm, cinematic scene of entwined hands around a shared coffee cup, softly lit by morning light filtering through a window, on a subtle, grainy paper texture.",
+      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20a%20folded%20letter%20inside%20an%20open%20drawer%2C%20warm%20low%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=8",
+      "prompt_visual": "Quiet editorial photograph of a folded letter inside an open drawer, warm low light, muted earth tones, subtle paper texture, clean negative space, no text, no logo, no detailed faces.",
       "puntuacion_emocional": 9
     },
     {
@@ -106,18 +52,8 @@
       "tema": "Vínculos humanos",
       "archivo": "docs/_posts/2026-05-17-escrito-0012.md",
       "imagen": "/assets/social/escrito-0012.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20serene%2C%20empty%20room%20with%20a%20vacant%20chair%2C%20an%20empty%20cup%20on%20a%20table%2C%20and%20an%20open%20window%20letting%20in%20warm%2C%20natural%20light%2C%20evoking%20a%20sense%20of%20longing%20and%20shared%20silence.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A serene, empty room with a vacant chair, an empty cup on a table, and an open window letting in warm, natural light, evoking a sense of longing and shared silence.",
-      "puntuacion_emocional": 9
-    },
-    {
-      "id": 13,
-      "fecha": "2026-05-18T06:41:26.791749-05:00",
-      "tema": "Esperanza realista",
-      "archivo": "docs/_posts/2026-05-18-escrito-0013.md",
-      "imagen": "/assets/social/escrito-0013.png",
-      "background_image": "https://image.pollinations.ai/prompt/A%20serene%2C%20empty%20room%20at%20dawn%2C%20with%20a%20single%2C%20faintly%20lit%20candle%20on%20a%20table%2C%20and%20soft%20morning%20light%20peeking%20through%20a%20window%2C%20casting%20a%20warm%20glow%20on%20a%20vacant%20chair.?width=1080&height=1080&nologo=true&enhance=true",
-      "prompt_visual": "A serene, empty room at dawn, with a single, faintly lit candle on a table, and soft morning light peeking through a window, casting a warm glow on a vacant chair.",
+      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20a%20folded%20tablecloth%20and%20a%20chair%20left%20slightly%20pulled%20back%2C%20late%20afternoon%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=12",
+      "prompt_visual": "Quiet editorial photograph of a folded tablecloth and a chair left slightly pulled back, late afternoon light, muted earth tones, subtle paper texture, clean negative space, no text, no logo, no detailed faces.",
       "puntuacion_emocional": 9
     }
   ]

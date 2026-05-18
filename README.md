@@ -16,9 +16,9 @@ Sistema de escritura procedural con agentes de inteligencia artificial, validaci
 
 ## Sobre el proyecto
 
-**Procedural Writing System** es un proyecto experimental de inteligencia artificial que automatiza un flujo editorial completo: genera textos breves, los revisa, crea una dirección visual, compone una tarjeta gráfica y publica el resultado en una web estática.
+**Procedural Writing System** es un proyecto experimental de inteligencia artificial que automatiza un flujo editorial completo: genera textos breves, los revisa, aplica una pasada humanizer, crea una dirección visual, compone una tarjeta gráfica con el texto completo y publica el resultado en una web estática.
 
-El sistema usa como caso de aplicación una publicación digital llamada **Ecos del Alma**, una colección de escritos breves sobre memoria, vínculos, despedidas y regreso a uno mismo.
+El sistema usa como caso de aplicación una publicación digital llamada **Ecos del Alma**, una colección de escritos breves sobre memoria, vínculos, límites, cansancio, despedidas y regreso a uno mismo.
 
 La intención no es generar texto con un único prompt, sino construir una arquitectura controlada donde cada salida pase por reglas, memoria, validación y publicación automatizada.
 
@@ -32,10 +32,11 @@ El proyecto aborda varios problemas comunes en la generación automática de con
 - textos demasiado genéricos o con clichés;
 - errores de idioma o mezclas inesperadas;
 - repetición de temas;
+- repetición de objetos o escenas de apertura;
 - dependencia de procesos manuales para publicar;
 - ausencia de una identidad visual consistente.
 
-Para resolverlo, el sistema combina agentes especializados, una guía de estilo en JSON, memoria externa, validación editorial, generación visual y automatización con GitHub Actions.
+Para resolverlo, el sistema combina agentes especializados, una guía de estilo en JSON, memoria externa, validación editorial, reglas humanizer, generación visual y automatización con GitHub Actions.
 
 ## Qué hace
 
@@ -47,14 +48,16 @@ Cada ejecución sigue este flujo:
 4. Genera un texto breve en español.
 5. Aplica una corrección de idioma.
 6. Detecta palabras o fragmentos sospechosos fuera del español.
-7. Revisa el texto con un agente editorial.
-8. Si el texto no cumple los criterios, vuelve a intentarlo.
-9. Genera una dirección visual para acompañar el escrito.
-10. Crea una imagen base.
-11. Compone una tarjeta editorial de 1080x1080 px.
-12. Crea una publicación Markdown en `docs/_posts/`.
-13. Actualiza la memoria del sistema.
-14. Publica la nueva entrada mediante GitHub Pages.
+7. Aplica una pasada humanizer para quitar tono de plantilla.
+8. Revisa el texto con un agente editorial.
+9. Si el texto no cumple los criterios, vuelve a intentarlo.
+10. Genera una dirección visual para acompañar el escrito.
+11. Crea una imagen base.
+12. Compone una tarjeta editorial de 1080x1080 px con el texto completo.
+13. Crea una publicación Markdown en `docs/_posts/`.
+14. Actualiza la memoria del sistema.
+15. Publica la nueva entrada mediante GitHub Pages.
+16. En la portada, muestra los escritos en bloques de diez para que la lectura no se vuelva pesada.
 
 ## Caso de uso: Ecos del Alma
 
@@ -64,10 +67,12 @@ Cada entrada contiene:
 
 - un tema;
 - un escrito breve;
-- una tarjeta visual;
+- una tarjeta visual con el texto completo;
 - una página individual;
 - fecha de publicación;
 - metadatos para reconstruir o actualizar la pieza.
+
+La portada conserva todos los escritos en el mismo lugar, pero los agrupa de diez en diez con controles de página al final de la lista.
 
 Este caso de uso permite probar el sistema en un escenario real: una línea editorial definida, estética consistente, generación periódica y publicación automática.
 
@@ -82,19 +87,20 @@ flowchart TD
     D --> E
     E --> F[Texto generado]
     F --> G[Corrección de idioma]
-    G --> H[Validación de español]
-    H --> I[Agente: Guardián de la Emoción]
-    I --> J{¿Texto aprobado?}
-    J -- No --> E
-    J -- Sí --> K[Agente: El Visualizador]
-    K --> L[Prompt visual]
-    L --> M[Imagen base]
-    M --> N[Composición con Pillow]
-    N --> O[Tarjeta 1080x1080]
-    O --> P[Publicación Markdown]
-    P --> Q[Actualizar memoria]
-    Q --> R[Commit automático]
-    R --> S[GitHub Pages]
+    G --> H[Pasada humanizer]
+    H --> I[Validación de español]
+    I --> J[Agente: Guardián de la Emoción]
+    J --> K{¿Texto aprobado?}
+    K -- No --> E
+    K -- Sí --> L[Agente: El Visualizador]
+    L --> M[Prompt visual]
+    M --> N[Imagen base]
+    N --> O[Composición con Pillow]
+    O --> P[Tarjeta 1080x1080]
+    P --> Q[Publicación Markdown]
+    Q --> R[Actualizar memoria]
+    R --> S[Commit automático]
+    S --> T[GitHub Pages]
 ```
 
 ## Módulos principales
@@ -122,6 +128,8 @@ Incluye:
 - generación del texto;
 - corrección de idioma;
 - detección de palabras sospechosas;
+- pasada humanizer;
+- bloqueo de motivos sobreusados;
 - revisión editorial;
 - generación de prompt visual.
 
@@ -194,9 +202,9 @@ Recibe instrucciones sobre:
 
 Su salida debe ser únicamente el texto final, sin título, firma ni explicación.
 
-### 2. Corrector de idioma
+### 2. Corrector de idioma y humanizer
 
-Después de generar el texto, el sistema aplica una pasada de seguridad para mantener la salida completamente en español.
+Después de generar el texto, el sistema aplica una pasada de seguridad para mantener la salida completamente en español. Luego revisa la redacción con reglas humanizer: menos frases hechas, menos símbolos inflados, más detalle concreto y más variedad entre publicaciones.
 
 Esta capa intenta corregir:
 
@@ -205,6 +213,7 @@ Esta capa intenta corregir:
 - tokens extraños;
 - mezclas tipo `calleOutside`;
 - respuestas con formato no deseado.
+- motivos bloqueados por repetición editorial.
 
 ### 3. El Guardián de la Emoción
 
@@ -226,7 +235,7 @@ Si el texto no pasa la revisión, se rechaza y el flujo vuelve a generar.
 
 Genera un prompt visual para crear una imagen base relacionada con el texto.
 
-Esa imagen no se publica directamente: se usa como fondo para crear una tarjeta editorial con diseño consistente.
+Esa imagen no se publica directamente: se usa como fondo para crear una tarjeta editorial con diseño consistente. El texto final se renderiza localmente para evitar recortes y errores tipográficos de la IA de imagen.
 
 ## Control de calidad
 
@@ -337,8 +346,8 @@ Dentro de `.env`, agrega tu configuración:
 GROQ_API_KEY=gsk_tu_clave_de_groq
 GROQ_MODEL=llama-3.3-70b-versatile
 PROJECT_TIMEZONE=America/Bogota
-MAX_INTENTOS=3
-TEMAS_RECIENTES_A_EVITAR=3
+MAX_INTENTOS=5
+TEMAS_RECIENTES_A_EVITAR=6
 ```
 
 El archivo `.env` no debe subirse al repositorio.
@@ -448,11 +457,11 @@ Y contiene front matter similar a:
 ```yaml
 ---
 layout: post
-title: "Despedidas y duelos"
-date: 2026-05-10 03:00:00 -0500
+title: "Después del ruido"
+date: 2026-05-19 03:00:00 -0500
 categories: [ecos-del-alma]
-tema: "Despedidas y duelos"
-image: "/assets/social/escrito-0005.png"
+tema: "Después del ruido"
+image: "/assets/social/escrito-0014.png"
 background_image: "https://image.pollinations.ai/prompt/..."
 ---
 ```

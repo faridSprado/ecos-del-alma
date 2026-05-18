@@ -142,6 +142,10 @@ a { color: inherit; }
   gap: 1.4rem;
 }
 
+.post-card.is-hidden-by-page {
+  display: none;
+}
+
 .post-card {
   display: grid;
   grid-template-columns: minmax(250px, 0.86fr) minmax(0, 1fr);
@@ -235,6 +239,71 @@ a { color: inherit; }
 
 .read-link:hover::after {
   transform: translateX(3px);
+}
+
+.pagination-controls {
+  width: min(760px, 100%);
+  margin: 2.3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination-button,
+.pagination-page {
+  border: 1px solid rgba(166, 126, 87, 0.24);
+  background: rgba(255, 250, 243, 0.68);
+  color: #70563f;
+  font: inherit;
+  font-size: 0.88rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.pagination-button {
+  min-height: 2.45rem;
+  padding: 0.55rem 0.95rem;
+}
+
+.pagination-page {
+  min-width: 2.45rem;
+  min-height: 2.45rem;
+  padding: 0.45rem 0.7rem;
+}
+
+.pagination-button:hover:not(:disabled),
+.pagination-page:hover {
+  background: rgba(169, 120, 76, 0.1);
+  border-color: rgba(166, 126, 87, 0.38);
+  color: #4a3828;
+  transform: translateY(-1px);
+}
+
+.pagination-button:disabled {
+  cursor: default;
+  opacity: 0.48;
+}
+
+.pagination-page.is-active {
+  background: #5d4632;
+  border-color: #5d4632;
+  color: #fff8ef;
+  box-shadow: 0 8px 22px rgba(69, 49, 31, 0.16);
 }
 
 .post-container,
@@ -360,6 +429,18 @@ a { color: inherit; }
   .site-nav { gap: 0.2rem; }
   .site-nav a { padding: 0.42rem 0.62rem; }
   .intro-block { padding-left: 1rem; }
+  .pagination-controls { gap: 0.45rem; }
+  .pagination-button {
+    min-height: 2.25rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.82rem;
+  }
+  .pagination-page {
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    padding: 0.4rem 0.58rem;
+    font-size: 0.82rem;
+  }
   .post-card,
   .post-container,
   .content-card { border-radius: 24px; }

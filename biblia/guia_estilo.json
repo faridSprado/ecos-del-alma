@@ -4,7 +4,7 @@
   "tono_estilo": {
     "genero": "prosa poética contemporánea y reflexión íntima",
     "atmosfera": "cercana, honesta, vulnerable, visual y contenida",
-    "longitud": "entre 45 y 95 palabras; frases con ritmo, pausas y respiración",
+    "longitud": "entre 45 y 85 palabras; frases con ritmo, pausas y respiración",
     "voz": "primera persona ocasional o segunda persona cercana; nunca tono de manual ni discurso motivacional",
     "recursos_permitidos": [
       "imagen sensorial",
@@ -21,7 +21,10 @@
       "lenguaje demasiado dramático",
       "exceso de signos de exclamación",
       "explicaciones sobre el significado del texto",
-      "sonar como publicidad o texto corporativo"
+      "sonar como publicidad o texto corporativo",
+      "arrancar siempre desde la misma mesa, taza, café o ventana",
+      "cierres con moraleja",
+      "frases que parezcan autoayuda o consuelo prefabricado"
     ]
   },
   "temas": [
@@ -56,14 +59,102 @@
     {
       "nombre": "Lo que no dije",
       "descripcion": "Palabras guardadas, conversaciones pendientes, cartas que nunca salieron."
+    },
+    {
+      "nombre": "Cansancio silencioso",
+      "descripcion": "Días pesados, rutinas que agotan, necesidad de bajar el ritmo sin justificarlo."
+    },
+    {
+      "nombre": "Perdonarme despacio",
+      "descripcion": "Culpa, ternura propia, errores que ya no necesitan castigo."
+    },
+    {
+      "nombre": "La casa interior",
+      "descripcion": "Hábitos, espacios, objetos y pequeñas decisiones que devuelven calma."
+    },
+    {
+      "nombre": "Miedo a empezar",
+      "descripcion": "El temblor antes de cambiar, el primer paso sin épica y sin certeza."
+    },
+    {
+      "nombre": "Alegría discreta",
+      "descripcion": "Momentos breves de alivio, humor suave y belleza cotidiana sin exagerar."
+    },
+    {
+      "nombre": "Rabia tranquila",
+      "descripcion": "Límites, cansancio de ceder, fuerza serena para decir basta."
+    },
+    {
+      "nombre": "Esperar sin romperse",
+      "descripcion": "Paciencia difícil, incertidumbre y cuidado de uno mismo mientras algo tarda."
+    },
+    {
+      "nombre": "Después del ruido",
+      "descripcion": "La calma que llega cuando termina una discusión, una crisis o una etapa intensa."
+    },
+    {
+      "nombre": "Cuerpo y memoria",
+      "descripcion": "Sensaciones físicas donde vuelven recuerdos, tensión, alivio o deseo de descanso."
+    },
+    {
+      "nombre": "Domingos raros",
+      "descripcion": "Melancolía de fin de día, tiempo suspendido, ganas de ordenar lo que quedó pendiente."
     }
   ],
   "estructura_poetica": [
-    "Abrir con una imagen concreta: una taza, una ventana, una calle, una camisa, una llamada no contestada.",
+    "Abrir con una imagen concreta y distinta en cada publicación: una llave, una camisa, una libreta, una cicatriz pequeña, un pasillo, una planta seca, una silla corrida, una llamada no contestada.",
     "Conectar esa imagen con una emoción sin explicarla demasiado.",
     "Evitar moralejas directas; dejar que el lector complete el sentido.",
     "Cerrar con una frase breve que deje una pausa."
   ],
+  "motivos_bloqueados": [
+    "taza",
+    "tazas"
+  ],
+  "motivos_vigilados": [
+    "café",
+    "ventana",
+    "mesa",
+    "amanecer",
+    "silencio",
+    "luz que se filtra"
+  ],
+  "objetos_sugeridos": [
+    "llave",
+    "camisa",
+    "libreta",
+    "recibo doblado",
+    "planta seca",
+    "silla corrida",
+    "zapatos junto a la puerta",
+    "mensaje sin enviar",
+    "toalla húmeda",
+    "cajón abierto",
+    "fotografía torcida",
+    "bolsa del mercado",
+    "paraguas olvidado",
+    "marca en la piel",
+    "sábana arrugada"
+  ],
+  "humanizer": {
+    "resumen": "La redacción debe sonar escrita por una persona: concreta, imperfecta en el buen sentido, sin inflar símbolos ni cerrar con frases de manual.",
+    "evitar": [
+      "palabras de importancia impostada como crucial, profundo, esencial, transformador o significativo",
+      "estructuras de 'no es solo esto, es aquello'",
+      "tríos mecánicos de ideas",
+      "cadenas de gerundios para fingir profundidad",
+      "frases como recordatorio, belleza en lo cotidiano, en este espacio o desde la sombra hacia la luz",
+      "cierres genéricos positivos",
+      "exceso de puntos suspensivos, exclamaciones o preguntas grandilocuentes"
+    ],
+    "preferir": [
+      "detalles materiales específicos",
+      "frases de longitud mezclada",
+      "una duda honesta en lugar de una enseñanza",
+      "verbos simples",
+      "cierre sobrio, con aire, sin explicar el texto"
+    ]
+  },
   "hashtags_sugeridos": [
     "#ecosdelalma",
     "#poesia",

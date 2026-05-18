@@ -45,6 +45,7 @@ def _font(
 
 def _clean_prompt_text(text: str, max_chars: int = 220) -> str:
     clean = re.sub(r"[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9 .,;:¿?¡!\-]", " ", text)
+    clean = re.sub(r"\btazas?\b", "objeto cotidiano", clean, flags=re.IGNORECASE)
     clean = " ".join(clean.split())
     return clean[:max_chars].strip()
 
@@ -57,6 +58,7 @@ def build_background_image_url(texto: str, tema: str, publicacion_id: int | None
         f"quiet editorial photograph inspired by {tema}, "
         f"{fragmento}, soft natural window light, muted earth tones, "
         "warm minimalism, subtle paper texture, emotional atmosphere, "
+        "clean negative space for overlaid text, no cups, no mugs, "
         "no text, no logo, no typography, no detailed faces"
     )
     seed = publicacion_id or 1
@@ -206,52 +208,25 @@ def _wrap_by_pixels(
     return lines
 
 
-def _sentence_excerpt(text: str, max_chars: int = 150) -> str:
-    clean = " ".join(text.split())
-
-    if len(clean) <= max_chars:
-        return clean
-
-    sentences = re.split(r"(?<=[.!?¿])\s+", clean)
-    output = ""
-
-    for sentence in sentences:
-        candidate = f"{output} {sentence}".strip()
-
-        if len(candidate) <= max_chars:
-            output = candidate
-        else:
-            break
-
-    if len(output) >= 60:
-        return output.rstrip()
-
-    return clean[:max_chars].rsplit(" ", 1)[0].rstrip(".,;:…") + "…"
-
-
 def _text_block(
     draw: ImageDraw.ImageDraw,
     text: str,
     max_width: int,
     max_height: int,
 ):
-    for size in [46, 43, 40, 37, 35, 33]:
-        font = _font(size, serif=True)
-        line_height = int(size * 1.43)
-        lines = _wrap_by_pixels(text, font, max_width, draw)
+    clean = " ".join(text.split())
 
-        if len(lines) * line_height <= max_height and len(lines) <= 4:
+    for size in [39, 37, 35, 33, 31, 29, 27, 25, 23, 21]:
+        font = _font(size, serif=True)
+        line_height = int(size * 1.36)
+        lines = _wrap_by_pixels(clean, font, max_width, draw)
+
+        if len(lines) * line_height <= max_height:
             return font, lines, line_height
 
-    font = _font(33, serif=True)
-    line_height = int(33 * 1.43)
-    all_lines = _wrap_by_pixels(text, font, max_width, draw)
-    lines = all_lines[:4]
-
-    if len(all_lines) > 4 and lines:
-        lines[-1] = lines[-1].rstrip(".,;:…") + "…"
-
-    return font, lines, line_height
+    font = _font(20, serif=True)
+    line_height = int(20 * 1.32)
+    return font, _wrap_by_pixels(clean, font, max_width, draw), line_height
 
 
 def _rounded_shadow(
@@ -294,9 +269,9 @@ def generar_tarjeta_social(
     seed = f"{tema}-{publicacion_id}-{texto[:40]}"
     card = _make_background(imagen_url, seed)
 
-    # Panel principal: deja ver más la imagen de fondo.
-    panel_x, panel_y = 150, 170
-    panel_w, panel_h = 780, 690
+    # Panel principal. Es un poco más alto para alojar el texto completo.
+    panel_x, panel_y = 130, 135
+    panel_w, panel_h = 820, 810
 
     shadow = _rounded_shadow((panel_w, panel_h), radius=42, shadow=42)
     card.alpha_composite(shadow, (panel_x - 42, panel_y - 30))
@@ -317,8 +292,8 @@ def generar_tarjeta_social(
     label_font = _font(23, serif=False)
     brand_font = _font(35, serif=True)
 
-    content_x = panel_x + 82
-    top_y = panel_y + 70
+    content_x = panel_x + 72
+    top_y = panel_y + 58
 
     label = tema.upper()
     draw.text((content_x, top_y), label, fill=ACCENT, font=label_font)
@@ -328,18 +303,17 @@ def generar_tarjeta_social(
         width=2,
     )
 
-    body_text = _sentence_excerpt(texto)
+    text_area_h = panel_h - 300
     body_font, lines, line_height = _text_block(
         draw,
-        body_text,
-        max_width=610,
-        max_height=230,
+        texto,
+        max_width=panel_w - 144,
+        max_height=text_area_h,
     )
 
-    # Menos espacio muerto entre el título y el texto.
     text_height = len(lines) * line_height
-    text_area_y = panel_y + 245
-    text_y = text_area_y + max(0, (230 - text_height) // 2)
+    text_area_y = panel_y + 168
+    text_y = text_area_y + max(0, (text_area_h - text_height) // 2)
 
     for line in lines:
         draw.text((content_x, text_y), line, fill=INK, font=body_font)
