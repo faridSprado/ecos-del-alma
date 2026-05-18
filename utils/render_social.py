@@ -4,12 +4,13 @@ from io import BytesIO
 from pathlib import Path
 import random
 import re
+import time
 from urllib.parse import quote
 
 import requests
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 
-from config import SOCIAL_ASSETS_DIR
+from config import BACKGROUND_ASSETS_DIR, DOCS_DIR, SOCIAL_ASSETS_DIR
 
 CARD_SIZE = (1080, 1080)
 
@@ -131,12 +132,23 @@ def _download_background(url: str | None, seed: str) -> Image.Image:
     if not url:
         return _fallback_background(seed)
 
+    if url.startswith("/"):
+        local_path = DOCS_DIR / url.lstrip("/")
+        if local_path.exists():
+            image = Image.open(local_path).convert("RGB")
+            return ImageOps.fit(image, CARD_SIZE, method=Image.Resampling.LANCZOS)
+
+    path = Path(url)
+    if path.exists():
+        image = Image.open(path).convert("RGB")
+        return ImageOps.fit(image, CARD_SIZE, method=Image.Resampling.LANCZOS)
+
     headers = {
         "User-Agent": "Mozilla/5.0 (compatible; EcosDelAlma/1.0)",
         "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
     }
 
-    for timeout in (25, 45):
+    for timeout in (25, 45, 90, 150):
         try:
             response = requests.get(url, timeout=timeout, headers=headers)
             response.raise_for_status()
@@ -146,6 +158,7 @@ def _download_background(url: str | None, seed: str) -> Image.Image:
             image = Image.open(BytesIO(response.content)).convert("RGB")
             return ImageOps.fit(image, CARD_SIZE, method=Image.Resampling.LANCZOS)
         except Exception:
+            time.sleep(2)
             continue
 
     return _fallback_background(seed)
@@ -174,6 +187,21 @@ def _make_background(url: str | None, seed: str) -> Image.Image:
     composed = Image.alpha_composite(composed, dark)
 
     return composed
+
+
+def guardar_fondo_local(
+    imagen_url: str | None,
+    publicacion_id: int,
+    seed: str,
+) -> str:
+    """Guarda una copia local del fondo para reconstrucciones futuras."""
+
+    BACKGROUND_ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    image = _download_background(imagen_url, seed)
+    filename = f"escrito-{publicacion_id:04d}.jpg"
+    output = BACKGROUND_ASSETS_DIR / filename
+    image.convert("RGB").save(output, format="JPEG", quality=92, optimize=True)
+    return f"/assets/backgrounds/{filename}"
 
 
 def _wrap_by_pixels(

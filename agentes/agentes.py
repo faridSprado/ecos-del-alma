@@ -475,7 +475,45 @@ Responde únicamente con JSON válido, sin markdown, con esta estructura exacta:
     return violaciones, False, resultado
 
 
-# --- Agente 3: El Visualizador ---
+# --- Agente 3: El Titulador ---
+def agente_titulador(texto: str, tema: dict[str, str]) -> str:
+    print("🏷️ El Titulador busca un nombre breve...")
+
+    prompt = f"""
+Eres editor de títulos para {PROJECT_NAME}. Crea un título breve para este escrito.
+
+Tema editorial: {tema['nombre']}
+
+Reglas:
+- Debe tener entre 2 y 5 palabras.
+- Debe sonar íntimo, sobrio y un poco misterioso.
+- No repitas el nombre del tema.
+- No uses la palabra "alma".
+- No uses frases genéricas como "nuevo comienzo", "luz interior" o "camino de vida".
+- No uses comillas, punto final ni explicación.
+- Aplica humanizer: título concreto, natural, sin dramatismo impostado.
+
+Texto:
+{texto}
+"""
+
+    response = client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.35,
+        max_tokens=40,
+    )
+
+    titulo = limpiar_respuesta(response.choices[0].message.content or "")
+    titulo = re.sub(r"[\n\r]+", " ", titulo).strip(" .:;\"'")
+
+    if not titulo or normalizar_token(titulo) == normalizar_token(tema["nombre"]):
+        return "Lo que queda"
+
+    return titulo[:70]
+
+
+# --- Agente 4: El Visualizador ---
 def agente_visualizador(texto: str, tema: dict[str, str]) -> tuple[str, str]:
     print("🎨 El Visualizador crea la dirección visual...")
 

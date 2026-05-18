@@ -65,7 +65,8 @@ Cada ejecución sigue este flujo:
 
 Cada entrada contiene:
 
-- un tema;
+- un título breve;
+- un tema editorial;
 - un escrito breve;
 - una tarjeta visual con el texto completo;
 - una página individual;
@@ -144,9 +145,10 @@ Toma:
 - la imagen base;
 - el ID de publicación.
 
-Y genera una tarjeta cuadrada en:
+Guarda una copia local del fondo y genera una tarjeta cuadrada en:
 
 ```text
+docs/assets/backgrounds/
 docs/assets/social/
 ```
 
@@ -457,12 +459,12 @@ Y contiene front matter similar a:
 ```yaml
 ---
 layout: post
-title: "Después del ruido"
+title: "La casa despierta"
 date: 2026-05-19 03:00:00 -0500
 categories: [ecos-del-alma]
 tema: "Después del ruido"
 image: "/assets/social/escrito-0014.png"
-background_image: "https://image.pollinations.ai/prompt/..."
+background_image: "/assets/backgrounds/escrito-0014.jpg"
 ---
 ```
 

@@ -5,54 +5,60 @@
     {
       "id": 1,
       "fecha": "2026-05-09",
+      "titulo": "La risa en la cocina",
       "tema": "Vínculos humanos",
       "archivo": "docs/_posts/2026-05-09-escrito-0001.md",
       "imagen": "/assets/social/escrito-0001.png",
-      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20a%20warm%20kitchen%20doorway%2C%20two%20chairs%20near%20a%20table%2C%20soft%20evening%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=1"
+      "background_image": "/assets/backgrounds/escrito-0001.jpg"
     },
     {
       "id": 2,
       "fecha": "2026-05-10",
+      "titulo": "El cajón abierto",
       "tema": "Soledad fértil",
       "archivo": "docs/_posts/2026-05-10-escrito-0002.md",
       "imagen": "/assets/social/escrito-0002.png",
-      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20an%20open%20drawer%20with%20an%20old%20photo%2C%20dust%20in%20sunlight%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=2"
+      "background_image": "/assets/backgrounds/escrito-0002.jpg"
     },
     {
       "id": 4,
       "fecha": "2026-05-10",
+      "titulo": "Pista tibia",
       "tema": "Volver a mí",
       "archivo": "docs/_posts/2026-05-10-escrito-0004.md",
       "imagen": "/assets/social/escrito-0004.png",
-      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20an%20open%20window%20and%20a%20chair%20near%20a%20city%20street%2C%20warm%20muted%20light%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=4"
+      "background_image": "/assets/backgrounds/escrito-0004.jpg"
     },
     {
       "id": 6,
       "fecha": "2026-05-11T05:58:03.477892-05:00",
+      "titulo": "Sin hacer escena",
       "tema": "Amor consciente",
       "archivo": "docs/_posts/2026-05-11-escrito-0006.md",
       "imagen": "/assets/social/escrito-0006.png",
-      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20two%20hands%20resting%20near%20each%20other%20on%20a%20wooden%20table%2C%20soft%20morning%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=6",
+      "background_image": "/assets/backgrounds/escrito-0006.jpg",
       "prompt_visual": "Quiet editorial photograph of two hands resting near each other on a wooden table, soft morning light, muted earth tones, subtle paper texture, clean negative space, no text, no logo, no detailed faces.",
       "puntuacion_emocional": 9
     },
     {
       "id": 8,
       "fecha": "2026-05-13T05:22:06.277677-05:00",
+      "titulo": "La frase guardada",
       "tema": "Lo que no dije",
       "archivo": "docs/_posts/2026-05-13-escrito-0008.md",
       "imagen": "/assets/social/escrito-0008.png",
-      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20a%20folded%20letter%20inside%20an%20open%20drawer%2C%20warm%20low%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=8",
+      "background_image": "/assets/backgrounds/escrito-0008.jpg",
       "prompt_visual": "Quiet editorial photograph of a folded letter inside an open drawer, warm low light, muted earth tones, subtle paper texture, clean negative space, no text, no logo, no detailed faces.",
       "puntuacion_emocional": 9
     },
     {
       "id": 12,
       "fecha": "2026-05-17T04:43:47.458322-05:00",
+      "titulo": "La silla quieta",
       "tema": "Vínculos humanos",
       "archivo": "docs/_posts/2026-05-17-escrito-0012.md",
       "imagen": "/assets/social/escrito-0012.png",
-      "background_image": "https://image.pollinations.ai/prompt/quiet%20editorial%20photograph%20of%20a%20folded%20tablecloth%20and%20a%20chair%20left%20slightly%20pulled%20back%2C%20late%20afternoon%20light%2C%20muted%20earth%20tones%2C%20subtle%20paper%20texture%2C%20clean%20negative%20space%2C%20no%20text%2C%20no%20logo%2C%20no%20detailed%20faces?width=1080&height=1080&nologo=true&enhance=true&seed=12",
+      "background_image": "/assets/backgrounds/escrito-0012.jpg",
       "prompt_visual": "Quiet editorial photograph of a folded tablecloth and a chair left slightly pulled back, late afternoon light, muted earth tones, subtle paper texture, clean negative space, no text, no logo, no detailed faces.",
       "puntuacion_emocional": 9
     }

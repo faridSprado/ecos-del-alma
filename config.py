@@ -8,6 +8,7 @@ ROOT_DIR = Path(__file__).resolve().parent
 DOCS_DIR = ROOT_DIR / "docs"
 POSTS_DIR = DOCS_DIR / "_posts"
 SOCIAL_ASSETS_DIR = DOCS_DIR / "assets" / "social"
+BACKGROUND_ASSETS_DIR = DOCS_DIR / "assets" / "backgrounds"
 BIBLIA_PATH = ROOT_DIR / "biblia" / "guia_estilo.json"
 MEMORIA_DIR = ROOT_DIR / "memoria"
 MEMORIA_PUBLICACION_PATH = MEMORIA_DIR / "estado_publicacion.json"

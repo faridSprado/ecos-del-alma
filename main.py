@@ -5,7 +5,12 @@ import json
 from typing import Any
 from zoneinfo import ZoneInfo
 
-from agentes.agentes import agente_guardian, agente_poeta, agente_visualizador
+from agentes.agentes import (
+    agente_guardian,
+    agente_poeta,
+    agente_titulador,
+    agente_visualizador,
+)
 from config import (
     MAX_INTENTOS,
     MEMORIA_PUBLICACION_PATH,
@@ -14,7 +19,11 @@ from config import (
     PROJECT_TIMEZONE,
     TEMAS_RECIENTES_A_EVITAR,
 )
-from utils.render_social import build_background_image_url, generar_tarjeta_social
+from utils.render_social import (
+    build_background_image_url,
+    generar_tarjeta_social,
+    guardar_fondo_local,
+)
 
 
 def cargar_json(path, valor_por_defecto: dict[str, Any]) -> dict[str, Any]:
@@ -101,6 +110,7 @@ def main() -> None:
     nuevo_id = int(memoria_publicacion.get("ultimo_id", 0)) + 1
     nombre_archivo = f"{ahora.strftime('%Y-%m-%d')}-escrito-{nuevo_id:04d}.md"
     ruta_publicacion = POSTS_DIR / nombre_archivo
+    titulo_final = agente_titulador(texto_final, tema_final)
 
     imagen_url = None
     prompt_visual = None
@@ -118,21 +128,27 @@ def main() -> None:
             publicacion_id=nuevo_id,
         )
 
+    fondo_local = guardar_fondo_local(
+        imagen_url=imagen_url,
+        publicacion_id=nuevo_id,
+        seed=f"{tema_final['nombre']}-{nuevo_id}-{texto_final[:40]}",
+    )
+
     imagen_relativa = generar_tarjeta_social(
         texto=texto_final,
         tema=tema_final["nombre"],
-        imagen_url=imagen_url,
+        imagen_url=fondo_local,
         publicacion_id=nuevo_id,
     )
     print(f"🖼️ Tarjeta visual creada: docs{imagen_relativa}")
 
     contenido_md = crear_markdown(
-        titulo=tema_final["nombre"],
+        titulo=titulo_final,
         fecha=ahora,
         tema=tema_final["nombre"],
         texto=texto_final,
         imagen_relativa=imagen_relativa,
-        background_image=imagen_url,
+        background_image=fondo_local,
     )
 
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -145,10 +161,12 @@ def main() -> None:
         {
             "id": nuevo_id,
             "fecha": ahora.isoformat(),
+            "titulo": titulo_final,
             "tema": tema_final["nombre"],
             "archivo": str(ruta_publicacion.relative_to(POSTS_DIR.parent.parent)),
             "imagen": imagen_relativa,
-            "background_image": imagen_url,
+            "background_image": fondo_local,
+            "background_source": imagen_url,
             "prompt_visual": prompt_visual,
             "puntuacion_emocional": (revision_final or {}).get("puntuacion_emocional"),
         }
